@@ -63,7 +63,7 @@ async function getfilteredRequestLogs(req, res) {
 		const [results] = await pool.query(sql, params);
 		//404 if no request logs exist
 		if (results.length === 0) {
-			return res.status(404).json(errorMessages.REQUEST_LOG_DOESNOT_EXIST);
+			return res.status(404).json({error: errorMessages.REQUEST_LOG_DOESNOT_EXIST});
 		}
 		return res.status(200).json(results);
 	} catch (error) {
